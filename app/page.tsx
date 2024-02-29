@@ -4,7 +4,7 @@ import Picture from "./components/(picture)/Picture";
 
 export default function Home() {
   return (
-    <main className="flex min-w-screen flex-col items-center justify-start bg-red-500 h-full sm:h-[90%] pl-24 pr-24">
+    <main className="flex min-w-screen flex-col items-center justify-start  h-full sm:h-[90%] pl-24 pr-24">
         
         <Picture />
         <div>bilde</div>

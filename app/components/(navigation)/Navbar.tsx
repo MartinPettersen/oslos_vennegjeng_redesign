@@ -12,7 +12,7 @@ const Navbar = async() => {
 
   return (
     <header className="text-orange-300 flex bg-slate-600 items-center justify-center w-screen sm:h-[10%]">
-      <nav className="flex flex-col sm:flex-row w-full px-8 py-4 items-center justify-between">
+      <nav className="flex flex-col font-bold sm:flex-row w-full px-8 py-4 items-center justify-between">
         <Logo />
         <div>
             <Link href="/">Hjem</Link>
