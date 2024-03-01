@@ -1,31 +1,31 @@
 import { NextResponse } from "next/server";
 import Forum from '@/app/(models)/Forum';
 import Thread from '@/app/(models)/Thread';
+import Post from '@/app/(models)/Post';
+
 
 
 export async function POST(req: any) {
     try {
         const body = await req.json()
-        const formData = body.form
-        const forumLabel = body.forumLabel
-        const threadId = body.id
+        const postData = body.post
 
 
 
-        if (!forumLabel || !threadId) {
+        if (!postData) {
             return NextResponse.json({ message: "Mangler informasjon" }, { status: 400 })
 
         }
 
-        const existingForum = await Forum.findOne({ label: forumLabel }).lean().exec();
+        const existingForum = await Thread.findOne({ id: postData.threadId }).lean().exec();
 
         // if (existingForum) {
         //     return NextResponse.json({ message: "Forum finnes allerede" }, { status: 409 })
         // }
         
-        await Thread.create(formData)
-        await Forum.findOneAndUpdate({ label: forumLabel }, { threads: [ formData.id, ...existingForum!.threads] })
-        return NextResponse.json({ message: "Innlegg opprettet" }, { status: 201 })
+        await Post.create(postData)
+        await Thread.findOneAndUpdate({ id: postData.threadId }, { threads: [ postData.threadId, ...existingForum!.replies] })
+        return NextResponse.json({ message: "Kommentar opprettet" }, { status: 201 })
 
     } catch (error) {
         console.log(error);

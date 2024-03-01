@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className + "flex h-screen w-full bg-red-500 mx-auto"}>
         <Navbar />
 
-        <div className="h-full sm:h-[90%] p-4">
+        <div className="h-full sm:h-[90%] ">
         {children}
 
         </div>

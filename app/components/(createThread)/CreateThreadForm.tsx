@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Thread } from "../../../types/Thread";
-
+import { v4 as uuidv4 } from 'uuid';
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 
@@ -28,7 +28,7 @@ type Props = {
 const CreateThreadForm = ({forumLabel}: Props) => {
   const router = useRouter();
 
-
+  const id = uuidv4();
 
   const {data: session}: any = useSession({
     required: true,
@@ -40,9 +40,11 @@ const CreateThreadForm = ({forumLabel}: Props) => {
 
 
   const [form, setForm] = useState({
+    id: id,
     headline: "",
     userName: session?.user?.name,
     content: "",
+    forumLabel: forumLabel,
     replies: []
   });
   const [errorMessage, setErrorMessage] = useState("");
@@ -62,7 +64,7 @@ const CreateThreadForm = ({forumLabel}: Props) => {
 
     const res = await fetch("/api/Threads", {
       method: "POST",
-      body: JSON.stringify({ form, forumLabel }),
+      body: JSON.stringify({ form, forumLabel, id }),
       headers: new Headers({ "content-type": "application/json" }),
     });
 
