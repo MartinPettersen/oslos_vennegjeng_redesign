@@ -18,6 +18,7 @@ type Thread = {
 
 const forumSchema = new Schema({
     label: String,
+    status: String,
     threads: Array,
 },
     {

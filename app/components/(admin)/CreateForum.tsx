@@ -23,6 +23,7 @@ const CreateForum = () => {
   const router = useRouter();
   const [forum, setForum] = useState({
     label: "",
+    status: "clear",
     threads: [],
   });
   const [errorMessage, setErrorMessage] = useState("");

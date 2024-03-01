@@ -10,6 +10,9 @@ export default withAuth(
         if (req.nextUrl.pathname.startsWith("/AdminPage") && req.nextauth.token!.role != "admin") {
             return NextResponse.rewrite(new URL("/Denied", req.url))
         }
+        if (req.nextUrl.pathname.startsWith("/CreateForum") && req.nextauth.token!.role != "admin") {
+            return NextResponse.rewrite(new URL("/Denied", req.url))
+        }
     },
     {
         callbacks: {
@@ -18,4 +21,4 @@ export default withAuth(
     }
 );
 
-export const config = {matcher: ["/AdminPage"]}
+export const config = {matcher: ["/AdminPage", "/CreateForum"]}
