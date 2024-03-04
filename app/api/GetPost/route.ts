@@ -7,13 +7,14 @@ export async function POST(req: any) {
         const body = await req.json()
         const postId = body.postId
         
-
+        console.log(postId)
         if (!postId) {
             return NextResponse.json({ message: "Mangler Post" }, { status: 400 })
         }
 
-        const existingPost = await Post.findOne({ id: postId }).lean().exec();
-
+        const existingPost = await Post.findOne({ postId: postId }).lean().exec();
+        console.log("post runner")
+        console.log(existingPost)
         // if (!existingForum) {
         //     return NextResponse.json({ message: "Forum finnes ikke" }, { status: 404 })
         // }

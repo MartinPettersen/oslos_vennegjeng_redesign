@@ -25,7 +25,7 @@ export async function POST(req: any) {
         
         await Post.create(postData)
         console.log(postData)
-        await Thread.findOneAndUpdate({ id: postData.threadId }, { replies: [ postData.threadId, ...existingForum!.replies] })
+        await Thread.findOneAndUpdate({ id: postData.threadId }, { replies: [ postData.postId, ...existingForum!.replies] })
         console.log(postData)
 
         return NextResponse.json({ message: "Kommentar opprettet" }, { status: 201 })

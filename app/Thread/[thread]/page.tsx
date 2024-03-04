@@ -1,6 +1,7 @@
 "use client";
 import Reply from "@/app/components/(thread)/Reply";
 import ThreadContent from "@/app/components/(thread)/ThreadContent";
+import { Thread } from "@/types/Thread";
 import React, { useEffect, useState } from "react";
 
 type Props = {
@@ -10,7 +11,7 @@ type Props = {
 const page = ({ params }: Props) => {
   const threadId = params.thread;
 
-  const [thread, setThread] = useState();
+  const [thread, setThread] = useState<Thread>();
   const [winReady, setwinReady] = useState(false);
 
   const getThread = async () => {

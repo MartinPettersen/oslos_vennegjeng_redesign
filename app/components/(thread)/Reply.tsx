@@ -2,6 +2,7 @@
 import { Thread } from '@/types/Thread';
 import React, { useState } from 'react'
 import ReplyForm from './ReplyForm';
+import ReplyContainer from './ReplyContainer';
 
 type Props = {
   thread: Thread;
@@ -28,7 +29,9 @@ const Reply = ({thread}: Props) => {
         <div onClick={() => setToggle(!toggle)} className="p-4 hover:cursor-pointer bg-green-500 flex w-[15%]">Svar</div>
 
         }
-        Reply
+      <div className="flex">
+        <ReplyContainer thread={thread} />
+      </div>
     </div>
   )
 }
