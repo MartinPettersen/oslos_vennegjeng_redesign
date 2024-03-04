@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { useSession } from 'next-auth/react'
 import { useRouter } from "next/navigation";
+import { redirect } from 'next/navigation'
 
 type Props = {
   thread: Thread;
@@ -18,7 +19,7 @@ const ReplyForm = ({ thread }: Props) => {
     const {data: session}: any = useSession({
       required: true,
       onUnauthenticated() {
-          // redirect("/api/auth/signin?callbackUrl=/Bruker");
+          redirect("/api/auth/signin?callbackUrl=/Bruker");
       }
   })
 

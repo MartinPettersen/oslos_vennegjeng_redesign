@@ -12,7 +12,7 @@ const ReplyContainer = ({thread}: Props) => {
 
 
   return (
-    <div>{thread!.replies.map((reply) => (
+    <div className='flex w-full'>{thread!.replies.map((reply) => (
         <ReplyDisplay postId={reply} />
     ))}</div>
   )

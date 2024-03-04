@@ -16,6 +16,8 @@ const page = () => {
   return (
     <div>Bruker Side
         <p>{session?.user?.email}</p>
+        <p>{session?.user?.name}</p>
+
         <p>{session?.user?.role}</p>
 
 
