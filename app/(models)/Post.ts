@@ -19,15 +19,15 @@ type Thread = {
 
 const postSchema = new Schema({
     postId: String,
+    threadId: String,
+    reply: String,
     userName: String,
-    postDate: String,
-    content: String,
 },
     {
         timestamps: true,
     }
 );
 
-const Post = mongoose.models.Thread || mongoose.model("Post", postSchema)
+const Post = mongoose.models.Post || mongoose.model("Post", postSchema)
 
 export default Post;

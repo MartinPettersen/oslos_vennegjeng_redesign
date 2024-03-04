@@ -1,3 +1,4 @@
+import { Thread } from "@/types/Thread";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -6,7 +7,7 @@ type Props = {
 };
 
 const ThreadDisplay = ({ threadId }: Props) => {
-  const [thread, setThread] = useState();
+  const [thread, setThread] = useState<Thread>();
   const [winReady, setwinReady] = useState(false);
 
   const getThread = async () => {
