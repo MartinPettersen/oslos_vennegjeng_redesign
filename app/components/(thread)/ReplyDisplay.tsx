@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { TrashIcon } from "@heroicons/react/20/solid";
 import { PencilIcon } from "@heroicons/react/20/solid";
+import EditForm from "./EditForm";
 
 type Props = {
   postId: String;
@@ -12,6 +13,7 @@ type Props = {
 const ReplyDisplay = ({ postId }: Props) => {
   const [post, setPost] = useState<Post>();
   const [winReady, setwinReady] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
   const getPost = async () => {
     const res = await fetch("/api/GetPost", {
@@ -66,7 +68,7 @@ const ReplyDisplay = ({ postId }: Props) => {
         <h3>{post?.userName}</h3>
         {session?.user?.name === post?.userName ? (
           <div className=" flex gap-2">
-            <PencilIcon className="h-4 w-4 hover:cursor-pointer" />
+            <PencilIcon onClick={() => setToggle(!toggle)} className="h-4 w-4 text-orange-400 hover:cursor-pointer" />
             <TrashIcon
               onClick={() => handleDelete()}
               className="h-4 w-4 text-red-500 hover:cursor-pointer"
@@ -76,7 +78,9 @@ const ReplyDisplay = ({ postId }: Props) => {
           <></>
         )}
       </div>
+          {toggle ?  <EditForm post={post!}/> :
       <p>{post?.reply}</p>
+    }
     </div>
   );
 };
