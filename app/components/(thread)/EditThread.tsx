@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Thread } from "../../../types/Thread";
-import { v4 as uuidv4 } from 'uuid';
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 
@@ -19,8 +18,6 @@ const EditThread = ({thread}: Props) => {
         redirect("/api/auth/signin?callbackUrl=/Bruker");
     }
 })
-
-
 
   const [form, setForm] = useState({
     id: thread.id,
