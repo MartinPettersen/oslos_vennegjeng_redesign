@@ -1,10 +1,12 @@
+'use client'
 import { Thread } from "@/types/Thread";
-import React from "react";
+import React, { useState } from "react";
 import ReplyContainer from "./ReplyContainer";
 import { TrashIcon } from "@heroicons/react/20/solid";
 import { PencilIcon } from "@heroicons/react/20/solid";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import EditThread from "./EditThread";
 
 type Props = {
   thread: Thread;
@@ -13,6 +15,7 @@ type Props = {
 const ThreadContent = ({ thread }: Props) => {
   const router = useRouter();
 
+  const [toggle, setToggle] = useState(false);
 
   const { data: session }: any = useSession({
     required: true,
@@ -43,7 +46,7 @@ const ThreadContent = ({ thread }: Props) => {
         <h1 className="font-bold text-xl">{thread!.headline}</h1>
         {session?.user?.name === thread?.userName ? (
           <div className=" flex gap-2">
-            <PencilIcon className="h-4 w-4 hover:cursor-pointer" />
+            <PencilIcon onClick={() => setToggle(!toggle)} className="h-4 w-4 hover:cursor-pointer" />
             <TrashIcon
               onClick={() => handleDelete()}
               className="h-4 w-4 text-red-500 hover:cursor-pointer"
@@ -54,7 +57,11 @@ const ThreadContent = ({ thread }: Props) => {
         )}
       </div>
       <div>{thread!.userName}</div>
+      {toggle ? 
+      <EditThread thread={thread}/>  :
+    
       <p>{thread!.content}</p>
+    }
     </div>
   );
 };
