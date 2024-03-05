@@ -24,7 +24,7 @@ const Navbar = async() => {
             <Link href="/AdminPage">Admin</Link>
         </div>
 
-        {session ? <div><Link href="/api/auth/signout?callbackUrl=/">Logg ut</Link></div>: <div><Link href="/api/auth/signin">Login</Link></div>}
+        {session ? <div><Link href="/api/auth/signout?callbackUrl=/">Logg ut</Link></div>:<> <div><Link href="/api/auth/signin">Login</Link></div> <div><Link href="/CreateUser">Ny Bruker</Link></div> </>}
       </nav>
     </header>
   );
