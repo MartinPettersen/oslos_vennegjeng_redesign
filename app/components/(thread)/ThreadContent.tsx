@@ -4,12 +4,16 @@ import ReplyContainer from "./ReplyContainer";
 import { TrashIcon } from "@heroicons/react/20/solid";
 import { PencilIcon } from "@heroicons/react/20/solid";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 type Props = {
   thread: Thread;
 };
 
 const ThreadContent = ({ thread }: Props) => {
+  const router = useRouter();
+
+
   const { data: session }: any = useSession({
     required: true,
     onUnauthenticated() {
@@ -28,7 +32,8 @@ const ThreadContent = ({ thread }: Props) => {
     if (!res.ok) {
       const response = await res.json();
     } else {
-
+      router.refresh();
+      router.push("/");
     }
   };
 

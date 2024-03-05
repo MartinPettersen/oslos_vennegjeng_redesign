@@ -24,7 +24,7 @@ const EditForm = ({ post }: Props) => {
   const [form, setForm] = useState({
     postId: post.postId,
     threadId: post.threadId,
-    reply: post.reply,
+    reply: post.reply.toString(),
     userName: post.userName,
   });
 
