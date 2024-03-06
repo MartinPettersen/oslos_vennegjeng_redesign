@@ -2,6 +2,13 @@ import { NextResponse } from "next/server";
 import Thread from '@/app/(models)/Thread';
 import Post from "@/app/(models)/Post";
 
+type ThreadT = {
+    headline: String;
+    userName: String;
+    content: String;
+    replies: Post[];
+}
+
 export async function POST(req: any) {
     try {
         console.log("did i get called? ")
@@ -20,7 +27,9 @@ export async function POST(req: any) {
         // }
 
         // await Forum.create(forumData)
-        const existingThread = await Thread.findOne({ id: threadId }).lean().exec();
+        let existingThread = await Thread.findOne({ id: threadId }).lean().exec() as any as ThreadT;
+
+        console.log(existingThread.replies)
 
         const index = existingThread!.replies.indexOf(postId);
         if (index > -1) {
