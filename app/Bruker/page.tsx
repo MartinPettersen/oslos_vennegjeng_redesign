@@ -14,13 +14,11 @@ const page = () => {
     })
 
   return (
-    <div>Bruker Side
-        <p>{session?.user?.email}</p>
-        <p>{session?.user?.name}</p>
-
-        <p>{session?.user?.role}</p>
-
-
+    <div className='flex w-full h-full items-center justify-center flex-col gap-4 text-orange-300 text-xl font-bold'>
+        <h1>Bruker Side</h1>
+        <p>Email: {session?.user?.email}</p>
+        <p>Navn: {session?.user?.name}</p>
+        <p>Role: {session?.user?.role}</p>
     </div>
   )
 }
