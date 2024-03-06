@@ -59,18 +59,18 @@ const EditForm = ({ post }: Props) => {
   };
 
   return (
-    <div className="z-[100] absolute w-[80%] sm:w-[50%]   rounded-sm drop-shadow-md flex items-start gap-4 flex-col p-4">
+    <div className="z-[100] absolute w-[80%] sm:w-[50%]   rounded-sm drop-shadow-md flex items-center gap-4 flex-col p-4">
       <p className="text-red-700">{errorMessage}</p>
       <form
         onSubmit={handleSubmit}
         method="post"
-        className="flex flex-col w-full h-[40%] sm:h-[80%] bg-slate-600 p-6 text-orange-300 font-bold gap-4 sm:gap-4"
+        className="flex flex-col w-full sm:w-[50%] h-[40%] sm:h-[80%] bg-slate-600 p-6 text-orange-300 font-bold gap-4 sm:gap-4"
       >
         <h1 className="flex items-center justify-center">Endre Innlegg</h1>
         <h1>Du svarer som: {session?.user?.name}</h1>
 
         <div className="flex gap-2">
-          <label>Svar</label>
+          <label className="">Svar </label>
           <input
             id="reply"
             type="text"
@@ -78,7 +78,7 @@ const EditForm = ({ post }: Props) => {
             onChange={handleChange}
             required={true}
             value={form.reply}
-            className=" text-slate-800 w-full"
+            className=" text-slate-800 "
           />
         </div>
         <div className="flex items-center justify-center">

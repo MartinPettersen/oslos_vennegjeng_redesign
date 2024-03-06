@@ -8,7 +8,7 @@ type Props = {
 const page = ({ params }: Props) => {
   const forumLabel = params.forum;
   return (
-    <div>
+    <div className='w-full height-full p-4'>
         <CreateThreadForm forumLabel={forumLabel}/>
     </div>
   )

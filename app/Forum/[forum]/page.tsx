@@ -1,5 +1,6 @@
 "use client";
 import ThreadDisplay from "@/app/components/(thread)/ThreadDisplay";
+import { Forum } from "@/types/Forums";
 import { Thread } from "@/types/Thread";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -11,7 +12,7 @@ type Props = {
 const page = ({ params }: Props) => {
   const forumLabel = params.forum;
 
-  const [forum, setForum] = useState([]);
+  const [forum, setForum] = useState<Forum>();
   const [winReady, setwinReady] = useState(false);
 
   const getForum = async () => {
@@ -54,13 +55,13 @@ const page = ({ params }: Props) => {
         </Link>
         <div className="w-full flex flex-col gap-4 items-center justify-center">
           {winReady
-            ? forum.threads.map((thread: any) => (
+            ? forum!.threads.map((thread: any) => (
                 <div className="bg-slate-500 hover:bg-slate-400 text-orange-300 flex flex-col p-4 w-[80%] sm:w-[40%]">
                   <ThreadDisplay threadId={thread} />
                   
                 </div>
               ))
-            : <div className="animate-pulse font-bold text-3xl text-orange-300 w-full items-center justify-center">Loading</div>}
+            : <div className="animate-pulse  flex font-bold text-3xl text-orange-300 w-full items-center justify-center">Loading</div>}
         </div>
       </div>
     </div>

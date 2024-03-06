@@ -83,14 +83,14 @@ const CreateThreadForm = ({forumLabel}: Props) => {
       <form
         onSubmit={handleSubmit}
         method="post"
-        className="flex flex-col h-[40%] sm:h-[80%] bg-slate-600 p-6 text-orange-300 font-bold gap-4 sm:gap-4"
+        className="flex flex-col w-full sm:w-[22%] h-[40%] sm:h-[80%] bg-slate-600 p-6 text-orange-300 font-bold gap-4 sm:gap-4"
       >
         <h1 className="flex items-center justify-center">Opprett Innlegg</h1>
         <h1>
             Navn: {session?.user?.name}
         </h1>
 
-        <div className="flex gap-2">
+        <div className="flex justify-between">
           <label>Tittel</label>
           <input
             id="headline"
@@ -102,7 +102,7 @@ const CreateThreadForm = ({forumLabel}: Props) => {
             className=" text-slate-800"
           />
         </div>
-        <div className="flex gap-2">
+        <div className="flex justify-between">
           <label>Innhold</label>
           <input
             id="content"
@@ -118,7 +118,7 @@ const CreateThreadForm = ({forumLabel}: Props) => {
           <input
             type="submit"
             value="Opprett Innlegg"
-            className="bg-slate-700 hover:bg-slate-500 border-4 text-white border-orange-300 hover:border-orange-500 w-[80%] p-4 rounded-full hover:cursor-pointer "
+            className="bg-slate-700 hover:bg-slate-500 border-4 text-white border-orange-300 hover:border-orange-500 sm:w-[80%] p-4 rounded-full hover:cursor-pointer "
           />
         </div>
       </form>
