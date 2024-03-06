@@ -20,9 +20,11 @@ const Navbar = async() => {
         <div>
             <Link href="/Bruker">Min Side</Link>
         </div>
+        {(session?.user?.role === "admin") ? 
         <div>
             <Link href="/AdminPage">Admin</Link>
-        </div>
+        </div>:
+        <></>}
 
         {session ? <div><Link href="/api/auth/signout?callbackUrl=/">Logg ut</Link></div>:<> <div><Link href="/api/auth/signin">Login</Link></div> <div><Link href="/CreateUser">Ny Bruker</Link></div> </>}
       </nav>

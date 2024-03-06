@@ -6,10 +6,9 @@ import ContainerForum from "./components/(forum)/ContainerForum";
 
 export default function Home() {
   return (
-    <main className="flex min-w-screen flex-col items-center justify-start  h-full sm:h-[90%] sm:pl-24 sm:pr-24">
+    <main className="flex min-w-screen flex-col gap-2 items-center justify-start  h-full sm:h-[90%] sm:pl-24 sm:pr-24">
         
         <Picture />
-        <div>bilde</div>
         <ContainerForum />
         
     </main>

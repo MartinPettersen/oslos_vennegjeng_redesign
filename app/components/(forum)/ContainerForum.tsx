@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import ForumDisplay from "./ForumDisplay";
+import ForumSelector from "./ForumSelector";
 
 function ContainerForum() {
   const [forums, setForums] = useState([]);
@@ -43,11 +44,16 @@ function ContainerForum() {
       */
 
   return (
-    <div className="flex flex-col gap-4 bg-slate-600 w-[100%] p-2 sm:w-[70%] items-center justify-center">
-      {winReady ? forums.map((forum) => (
-        
-            <ForumDisplay forum={forum} />
-      )) : null}
+    <div className="flex flex-col gap-4 bg-slate-700 w-[100%] p-2 sm:w-[70%] h-[40%] sm:h-[66%]  items-center justify-center">
+      <div className="">
+        <ForumSelector forums={forums}/>
+
+      </div>
+      <div className="flex flex-col gap-4 bg-slate-600 w-[100%] p-2  h-[100%]   items-center justify-center overflow-scroll">
+        {winReady
+          ? forums.map((forum) => <ForumDisplay forum={forum} />)
+          : null}
+      </div>
     </div>
   );
 }
