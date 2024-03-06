@@ -41,9 +41,10 @@ const ThreadContent = ({ thread }: Props) => {
   };
 
   return (
-    <div className="flex flex-col bg-slate-400 justify-center gap-4">
-      <div className="flex justify-between items-center">
+    <div className="flex flex-col bg-slate-600 justify-center gap-4 p-4">
+      <div className="flex justify-between items-center text-orange-300 ">
         <h1 className="font-bold text-xl">{thread!.headline}</h1>
+        <div className="">{thread!.replies.length}</div>
         {session?.user?.name === thread?.userName ? (
           <div className=" flex gap-2">
             <PencilIcon onClick={() => setToggle(!toggle)} className="h-4 w-4 hover:cursor-pointer" />
@@ -56,11 +57,11 @@ const ThreadContent = ({ thread }: Props) => {
           <></>
         )}
       </div>
-      <div>{thread!.userName}</div>
+      <div className="text-orange-300">{thread!.userName}</div>
       {toggle ? 
       <EditThread thread={thread}/>  :
     
-      <p>{thread!.content}</p>
+      <p className="text-orange-300">{thread!.content}</p>
     }
     </div>
   );

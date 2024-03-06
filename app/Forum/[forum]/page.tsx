@@ -40,22 +40,22 @@ const page = ({ params }: Props) => {
   }, []);
 
   return (
-    <div className=" bg-slate-500 justify-center w-screen items-center ">
+    <div className="  justify-center w-screen items-center ">
       <div className="flex flex-col items-center justify-center gap-4">
-        <div className="bg-red-300 w-[60%] p-4 sm:w-[40%] flex items-center justify-center font-bold text-6xl">
+        <div className=" w-[60%] text-orange-300 p-4 sm:w-[40%] flex items-center justify-center font-bold text-6xl">
           {forumLabel}
         </div>
 
         <Link
           href={`../CreateThread/${forumLabel}`}
-          className="w-[40%] flex p-4 items-center justify-center bg-sky-400"
+          className="w-[40%] flex p-4 items-center justify-center bg-slate-600 bg-opacity-70 hover:bg-slate-700 backdrop-blur-md text-orange-300 text-xl hover:text-orange-400"
         >
           Nytt Innlegg{" "}
         </Link>
         <div className="w-full flex flex-col gap-4 items-center justify-center">
           {winReady
             ? forum.threads.map((thread: any) => (
-                <div className="bg-slate-300 flex flex-col p-4 w-[80%] sm:w-[40%]">
+                <div className="bg-slate-500 hover:bg-slate-400 text-orange-300 flex flex-col p-4 w-[80%] sm:w-[40%]">
                   <ThreadDisplay threadId={thread} />
                   
                 </div>

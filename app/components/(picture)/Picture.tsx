@@ -3,7 +3,7 @@ import React from 'react'
 
 const Picture = () => {
   return (
-    <div className='w-screen sm:w-[80%] flex gap-1 items-center justify-center'>
+    <div className='w-screen sm:w-[80%] flex gap-4 items-center justify-center p-4'>
       <Image src='/lostrobot.jpg' alt="robot" width="200" height="200" className='hidden sm:block' />
       <Image src='/venner.jpg' alt="venner" width="200" height="200" className='hidden sm:block'/>
       <Image src='/leke.jpg' alt="leke" width="200" height="200" className='hidden sm:block'/>

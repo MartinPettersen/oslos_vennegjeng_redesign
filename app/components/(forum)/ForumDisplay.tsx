@@ -23,7 +23,7 @@ const ForumDisplay = ({ forum }: Props) => {
       body: JSON.stringify({ forumLabel }),
       headers: new Headers({ "content-type": "application/json" }),
     });
-     console.log("running");
+    console.log("running");
     // console.log(res)
     if (!res.ok) {
       const response = await res.json();
@@ -44,20 +44,25 @@ const ForumDisplay = ({ forum }: Props) => {
   }, []);
 
   return (
-    <Link href={`../Forum/${forum.label}`} className="p-2 bg-blue-500 w-[90%]">
-      <div>{forum.label}</div>
-      <div>Tråder: {forum.threads.length}</div>
-      <div>
+    <div className=" flex flex-col text-slate-100 h-full border-2 rounded border-orange-300 w-[90%]">
+      <Link
+        href={`../Forum/${forum.label}`}
+        className=" bg-slate-700 bg-opacity-50 p-2 hover:text-orange-400 backdrop-blur-md w-[100%]"
+      >
+        <h1 className="font-bold">{forum.label}</h1>
+        <div>Tråder: {forum.threads.length}</div>
+      </Link>
+      <div className="bg-slate-600 hover:text-orange-400 p-2 bg-opacity-50 backdrop-blur-md w-[100%]">
         {winReady ? (
-          <div>
-            <h1>Nyeste innlegg:</h1>
+          <Link href={`../../Thread/${thread?.id}`} className="flex">
+            <h1>Nyeste innlegg: </h1>
             <div>{thread?.headline}</div>
-          </div>
+          </Link>
         ) : (
           <></>
-        )}
+          )}
       </div>
-    </Link>
+    </div>
   );
 };
 

@@ -40,15 +40,16 @@ const page = ({ params }: Props) => {
   }, []);
 
   return (
-    <div className="flex justify-center w-screen items-center ">
-      <div className="bg-slate-300 p-4 w-full sm:w-[60%] flex">
+    <div className="flex justify-center w-screen items-center p-4">
+      <div className="bg-slate-300  p-4 w-full sm:w-[60%] flex">
+        
         {winReady ? (
-          <div className="w-full  sm:p-4">
+          <div className="w-full flex flex-col gap-2 sm:p-4 ">
             <ThreadContent thread={thread!} />
             <Reply thread={thread!}/>
-            <div>{thread!.replies.length}</div>
+            
           </div>
-        ) : null}
+        ) : <div className="animate-pulse font-bold text-3xl text-orange-300 w-full items-center justify-center">Loading</div>}
       </div>
     </div>
   );

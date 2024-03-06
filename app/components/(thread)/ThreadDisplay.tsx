@@ -35,16 +35,19 @@ const ThreadDisplay = ({ threadId }: Props) => {
     getThread();
   }, []);
 
-  return <div>{winReady ? <Link href={`../../Thread/${threadId}`} className="flex flex-col">
-    <h2 className="font-bold text-xl">
-    {thread!.headline} 
-    </h2>
-    <div className="flex justify-between">
-    <p>Author: {thread!.userName}</p> 
-    <p>#{thread!.replies.length}</p> 
-
+  return (
+    <div>
+      {winReady ? (
+        <Link href={`../../Thread/${threadId}`} className="flex flex-col text-orange-300 ">
+          <h2 className="font-bold text-xl">{thread!.headline}</h2>
+          <div className="flex justify-between">
+            <p>Author: {thread!.userName}</p>
+            <p>#{thread!.replies.length}</p>
+          </div>
+        </Link>
+      ) : null}
     </div>
-    </Link> : null}</div>;
+  );
 };
 
 export default ThreadDisplay;
