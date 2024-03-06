@@ -8,3 +8,12 @@ export type Thread = {
     forumLabel: String,
     replies: String[],
 }
+
+export type ThreadT = {
+    id: String,
+    headline: String,
+    userName: String,
+    content: String,
+    forumLabel: String,
+    replies: String[],
+}

@@ -2,6 +2,13 @@ import { NextResponse } from "next/server";
 import Thread from '@/app/(models)/Thread';
 import Post from "@/app/(models)/Post";
 import Forum from '@/app/(models)/Forum';
+import { ThreadT } from "@/types/Thread";
+
+type ForumT = {
+    label: String,
+    status: String,
+    threads: ThreadT[],
+}
 
 export async function POST(req: any) {
     try {
@@ -26,7 +33,7 @@ export async function POST(req: any) {
 
 
         // await Forum.create(forumData)
-        const existingForum = await Forum.findOne({ label: thread.forumLabel }).lean().exec();
+        const existingForum = await Forum.findOne({ label: thread.forumLabel }).lean().exec() as any as ForumT;
         // const existingThread = await Thread.findOne({ id: threadId }).lean().exec();
 
         const index = existingForum!.threads.indexOf(thread.id);
