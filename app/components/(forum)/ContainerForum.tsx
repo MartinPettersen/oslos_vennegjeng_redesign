@@ -45,12 +45,18 @@ function ContainerForum() {
 
   return (
     <div className="flex flex-col gap-4  w-[100%] sm:w-[70%] h-[50%] sm:h-[66%]  items-center justify-center">
-      <ForumSelector forums={forums}/>
-      <div className="flex flex-col gap-4 w-[100%] h-[100%] items-center justify-start overflow-y-auto">
-        {winReady
-          ? forums.map((forum) => <ForumDisplay forum={forum} />)
-          : null}
-      </div>
+      <ForumSelector forums={forums} />
+      {winReady ? (
+        <div className="flex flex-col gap-4 w-[100%] h-[100%] items-center justify-start overflow-y-auto">
+          {forums.map((forum) => (
+            <ForumDisplay forum={forum} />
+          ))}
+        </div>
+      ) : (
+        <div className="animate-pulse font-bold text-3xl flex text-orange-300 w-full items-center justify-center">
+          Loading
+        </div>
+      )}
     </div>
   );
 }

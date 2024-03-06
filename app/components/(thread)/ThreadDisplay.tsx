@@ -45,7 +45,7 @@ const ThreadDisplay = ({ threadId }: Props) => {
             <p>#{thread!.replies.length}</p>
           </div>
         </Link>
-      ) : null}
+      ) : <div className="animate-pulse font-bold text-3xl text-orange-300 w-full items-center justify-center">Loading</div>}
     </div>
   );
 };
