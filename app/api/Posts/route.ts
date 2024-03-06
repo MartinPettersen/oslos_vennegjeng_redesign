@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import Forum from '@/app/(models)/Forum';
 import Thread from '@/app/(models)/Thread';
 import Post from '@/app/(models)/Post';
+import { ThreadT } from "@/types/Thread";
 
 
 
@@ -17,7 +18,7 @@ export async function POST(req: any) {
 
         }
 
-        const existingForum = await Thread.findOne({ id: postData.threadId }).lean().exec();
+        const existingThread = await Thread.findOne({ id: postData.threadId }).lean().exec() as any as ThreadT;
 
         // if (existingForum) {
         //     return NextResponse.json({ message: "Forum finnes allerede" }, { status: 409 })
@@ -25,7 +26,7 @@ export async function POST(req: any) {
         
         await Post.create(postData)
         console.log(postData)
-        await Thread.findOneAndUpdate({ id: postData.threadId }, { replies: [ postData.postId, ...existingForum!.replies] })
+        await Thread.findOneAndUpdate({ id: postData.threadId }, { replies: [ postData.postId, ...existingThread!.replies] })
         console.log(postData)
 
         return NextResponse.json({ message: "Kommentar opprettet" }, { status: 201 })

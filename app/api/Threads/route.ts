@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import Forum from '@/app/(models)/Forum';
 import Thread from '@/app/(models)/Thread';
+import { ForumT } from "@/types/Forums";
 
 
 export async function POST(req: any) {
@@ -17,7 +18,7 @@ export async function POST(req: any) {
 
         }
 
-        const existingForum = await Forum.findOne({ label: forumLabel }).lean().exec();
+        const existingForum = await Forum.findOne({ label: forumLabel }).lean().exec() as any as ForumT;
 
         // if (existingForum) {
         //     return NextResponse.json({ message: "Forum finnes allerede" }, { status: 409 })

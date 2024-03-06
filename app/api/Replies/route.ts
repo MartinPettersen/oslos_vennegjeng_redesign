@@ -3,6 +3,7 @@ import Forum from '@/app/(models)/Forum';
 import Thread from '@/app/(models)/Thread';
 import Reply from "@/app/(models)/Reply";
 import Post from "@/app/(models)/Post";
+import { ThreadT } from "@/types/Thread";
 
 
 export async function POST(req: any) {
@@ -15,7 +16,7 @@ export async function POST(req: any) {
 
         }
 
-        const existingThread = await Thread.findOne({ id: formData.threadId }).lean().exec();
+        const existingThread = await Thread.findOne({ id: formData.threadId }).lean().exec() as any as ThreadT;
 
         // if (existingForum) {
         //     return NextResponse.json({ message: "Forum finnes allerede" }, { status: 409 })
