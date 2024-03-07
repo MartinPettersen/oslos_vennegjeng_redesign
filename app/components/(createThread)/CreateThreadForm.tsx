@@ -78,14 +78,14 @@ const CreateThreadForm = ({forumLabel}: Props) => {
   };
 
   return (
-    <div className="w-full h-full flex sm:items-center justify-center">
+    <div className="w-full h-full flex  sm:items-center justify-center">
       <p className="text-red-700">{errorMessage}</p>
       <form
         onSubmit={handleSubmit}
         method="post"
-        className="flex flex-col w-full sm:w-[22%] h-[40%] sm:h-[80%] bg-slate-600 p-6 text-orange-300 font-bold gap-4 sm:gap-4"
+        className="flex flex-col w-full sm:w-[33%] h-[40%] sm:h-[50%] bg-white rounded-xl p-6 text-sky-300 font-bold gap-4 sm:gap-4"
       >
-        <h1 className="flex items-center justify-center">Opprett Innlegg</h1>
+        <h1 className="flex items-center justify-center font-bold text-xl">Opprett Innlegg</h1>
         <h1>
             Navn: {session?.user?.name}
         </h1>
@@ -99,7 +99,7 @@ const CreateThreadForm = ({forumLabel}: Props) => {
             onChange={handleChange}
             required={true}
             value={form.headline}
-            className=" text-slate-800"
+            className=" text-slate-800 border-b-2 border-purple-300"
           />
         </div>
         <div className="flex justify-between">
@@ -111,14 +111,14 @@ const CreateThreadForm = ({forumLabel}: Props) => {
             onChange={handleChange}
             required={true}
             value={form.content}
-            className=" text-slate-800"
+            className=" text-slate-800 border-b-2 border-purple-300"
           />
         </div>
         <div className="flex items-center justify-center">
           <input
             type="submit"
             value="Opprett Innlegg"
-            className="bg-slate-700 hover:bg-slate-500 border-4 text-white border-orange-300 hover:border-orange-500 sm:w-[80%] p-4 rounded-full hover:cursor-pointer "
+            className="bg-slate-700 hover:bg-slate-500 border-4 text-purple-300 hover:text-sky-300 border-sky-300 hover:border-purple-300 sm:w-[80%] p-4 rounded-full hover:cursor-pointer "
           />
         </div>
       </form>

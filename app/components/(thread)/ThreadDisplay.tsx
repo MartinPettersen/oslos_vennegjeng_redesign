@@ -38,14 +38,14 @@ const ThreadDisplay = ({ threadId }: Props) => {
   return (
     <div>
       {winReady ? (
-        <Link href={`../../Thread/${threadId}`} className="flex flex-col text-orange-300 ">
+        <Link href={`../../Thread/${threadId}`} className="flex flex-col text-sky-300 hover:text-purple-300 ">
           <h2 className="font-bold text-xl">{thread!.headline}</h2>
           <div className="flex justify-between">
-            <p>Author: {thread!.userName}</p>
+            <p>{thread!.userName}</p>
             <p>#{thread!.replies.length}</p>
           </div>
         </Link>
-      ) : <div className="animate-pulse font-bold text-3xl text-orange-300 w-full items-center justify-center">Loading</div>}
+      ) : <div className="animate-pulse font-bold text-3xl text-sky-300 w-full items-center justify-center">Loading</div>}
     </div>
   );
 };

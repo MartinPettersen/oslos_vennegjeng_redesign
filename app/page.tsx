@@ -6,10 +6,13 @@ import ContainerForum from "./components/(forum)/ContainerForum";
 
 export default function Home() {
   return (
-    <main className="flex min-w-screen flex-col gap-2 items-center justify-start  h-full sm:h-[90%] sm:pl-24 sm:pr-24">
+    <main className="flex w-screen sm:w-full flex-row gap-2 items-start  sm:items-start justify-start sm:justify-center  h-full sm:h-full">
         
-        <Picture />
-        <ContainerForum />
+        <div className="flex w-full items-center justify-center sm:hidden">
+
+          <ContainerForum />
+        </div>
+
         
     </main>
   );

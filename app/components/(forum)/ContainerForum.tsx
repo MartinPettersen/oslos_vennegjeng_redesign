@@ -44,10 +44,10 @@ function ContainerForum() {
       */
 
   return (
-    <div className="flex flex-col gap-4  w-[100%] sm:w-[70%] h-[50%] sm:h-[66%]  items-center justify-center">
+    <div className="flex flex-col gap-4 w-[100%] p-4 sm:w-[100%] h-[50%] sm:h-full  items-center justify-center">
       <ForumSelector forums={forums} />
       {winReady ? (
-        <div className="flex flex-col gap-4 w-[100%] h-[100%] items-center justify-start overflow-y-auto">
+        <div className="flex flex-col pt-4 pb-4 bg-white gap-4 rounded-lg w-[100%] h-[100%] items-center justify-start overflow-y-auto no-scrollbar sm:overflow-hidden sm:hover:overflow-y-auto">
           {forums.map((forum) => (
             <ForumDisplay forum={forum} />
           ))}

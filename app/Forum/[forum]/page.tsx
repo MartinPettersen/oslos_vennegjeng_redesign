@@ -41,27 +41,27 @@ const page = ({ params }: Props) => {
   }, []);
 
   return (
-    <div className="  justify-center w-screen items-center ">
-      <div className="flex flex-col items-center justify-center gap-4">
-        <div className=" w-[60%] text-orange-300 p-4 sm:w-[40%] flex items-center justify-center font-bold text-6xl">
+    <div className=" flex justify-center w-screen sm:h-full sm:w-full  items-center ">
+      <div className="flex flex-col rounded-lg m-4 p-4 bg-white bg-opacity-40 sm:w-[70%] sm:h-[70%] items-center sm:items-start  justify-center sm:justify-start gap-4">
+        <div className=" w-[60%] text-sky-500  p-4 sm:w-[100%] flex items-center justify-center sm:items-start sm:justify-start font-bold text-6xl">
           {forumLabel}
         </div>
 
         <Link
           href={`../CreateThread/${forumLabel}`}
-          className="w-[40%] flex p-4 items-center justify-center bg-slate-600 bg-opacity-70 hover:bg-slate-700 backdrop-blur-md text-orange-300 text-xl hover:text-orange-400"
+          className="w-[40%] flex p-4 items-center justify-center bg-white rounded-xl bg-opacity-70 hover:bg-slate-700 sm:items-start sm:justify-start backdrop-blur-md text-sky-300 text-xl hover:text-purple-300"
         >
           Nytt Innlegg{" "}
         </Link>
-        <div className="w-full flex flex-col gap-4 items-center justify-center">
+        <div className="w-full flex flex-col overflow-y-auto no-scrollbar gap-4 items-center justify-center sm:items-start sm:justify-start">
           {winReady
             ? forum!.threads.map((thread: any) => (
-                <div className="bg-slate-500 hover:bg-slate-400 text-orange-300 flex flex-col p-4 w-[80%] sm:w-[40%]">
+                <div className="bg-white rounded-xl hover:bg-slate-700 hover:text-purple-300  flex flex-col p-4 w-[80%] sm:w-[80%]">
                   <ThreadDisplay threadId={thread} />
                   
                 </div>
               ))
-            : <div className="animate-pulse  flex font-bold text-3xl text-orange-300 w-full items-center justify-center">Loading</div>}
+            : <div className="animate-pulse  flex font-bold text-3xl text-sky-300 w-full items-center justify-center">Loading</div>}
         </div>
       </div>
     </div>
