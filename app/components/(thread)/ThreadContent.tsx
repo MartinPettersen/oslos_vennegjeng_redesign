@@ -41,6 +41,10 @@ const ThreadContent = ({ thread }: Props) => {
   };
 
   return (
+    <div>
+{toggle ? 
+      <EditThread thread={thread}/>  :
+      
     <div className="flex flex-col bg-white rounded-xl justify-center gap-4 p-4">
       <div className="flex justify-between items-center text-sky-300 ">
         <h1 className="font-bold text-xl">{thread!.headline}</h1>
@@ -51,17 +55,16 @@ const ThreadContent = ({ thread }: Props) => {
             <TrashIcon
               onClick={() => handleDelete()}
               className="h-4 w-4 text-red-500 hover:cursor-pointer"
-            />
+              />
           </div>
         ) : (
           <></>
-        )}
+          )}
       </div>
       <div className="text-purple-300">{thread!.userName}</div>
-      {toggle ? 
-      <EditThread thread={thread}/>  :
-    
+      
       <p className="text-sky-300">{thread!.content}</p>
+    </div>
     }
     </div>
   );

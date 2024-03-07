@@ -49,7 +49,7 @@ const page = ({ params }: Props) => {
             <Reply thread={thread!}/>
             
           </div>
-        ) : <div className="animate-pulse font-bold flex text-3xl text-orange-300 w-full items-center justify-center">Loading</div>}
+        ) : <div className="animate-pulse font-bold flex text-3xl text-purple-300 w-full items-center justify-center">Loading</div>}
       </div>
     </div>
   );

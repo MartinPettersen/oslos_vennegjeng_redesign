@@ -54,7 +54,7 @@ const EditForm = ({ post }: Props) => {
       setErrorMessage(response.message);
     } else {
       router.refresh();
-      router.push("/");
+      router.push(`/`);
     }
   };
 
@@ -64,7 +64,7 @@ const EditForm = ({ post }: Props) => {
       <form
         onSubmit={handleSubmit}
         method="post"
-        className="flex flex-col w-full sm:w-[50%] h-[40%] sm:h-[80%] bg-slate-600 p-6 text-orange-300 font-bold gap-4 sm:gap-4"
+        className="flex flex-col w-full sm:w-[50%] h-[40%] sm:h-[80%] bg-slate-600 p-6 text-sky-300 rounded-xl font-bold gap-4 sm:gap-4"
       >
         <h1 className="flex items-center justify-center">Endre Innlegg</h1>
         <h1>Du svarer som: {session?.user?.name}</h1>
@@ -85,7 +85,7 @@ const EditForm = ({ post }: Props) => {
           <input
             type="submit"
             value="Send Svar"
-            className="bg-slate-700 hover:bg-slate-500 border-4 text-white border-orange-300 hover:border-orange-500 w-[80%] p-4 rounded-full hover:cursor-pointer "
+            className="bg-slate-700 hover:bg-slate-500 border-4 text-white border-sky-300 hover:border-purple-300 w-[80%] p-4 rounded-full hover:cursor-pointer "
           />
         </div>
       </form>

@@ -62,7 +62,7 @@ const CreateForum = () => {
       <form
         onSubmit={handleSubmit}
         method="post"
-        className="flex flex-col h-[40%] sm:h-[80%] bg-slate-600 p-6 text-orange-300 font-bold gap-4 sm:gap-4"
+        className="flex flex-col h-[40%] sm:h-[40%] bg-white rounded-xl p-6 text-sky-300 font-bold gap-4 sm:gap-4"
       >
         <h1 className="flex items-center justify-center">Opprett Forum</h1>
         <div className="flex gap-2">
@@ -74,14 +74,14 @@ const CreateForum = () => {
             onChange={handleChange}
             required={true}
             value={forum.label}
-            className=" text-slate-800"
+            className=" text-slate-800 border-b-2 border-purple-300"
           />
         </div>
         <div className="flex items-center justify-center">
           <input
             type="submit"
             value="Opprett Forum"
-            className="bg-slate-700 hover:bg-slate-500 border-4 text-white border-orange-300 hover:border-orange-500 w-[80%] p-4 rounded-full hover:cursor-pointer "
+            className="bg-slate-700 hover:bg-slate-500 border-4 text-white border-sky-300 hover:border-purple-300 w-[80%] p-4 rounded-full hover:cursor-pointer "
           />
         </div>
       </form>

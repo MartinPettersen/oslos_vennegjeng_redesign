@@ -50,15 +50,15 @@ const ForumDisplay = ({ forum }: Props) => {
     onMouseEnter={() => setHovering(true)}
     onMouseLeave={() => setHovering(false)}
 
-    className=" flex flex-col text-slate-900 h-full rounded-full w-[90%]">
+    className=" bg-white flex flex-col text-slate-900 h-full rounded-xl w-[90%]">
       <Link
         href={`../Forum/${forum.label}`}
-        className=" bg-sky-300 bg-opacity-80 p-2 flex flex-row justify-between backdrop-blur-md w-[100%]"
+        className=" bg-sky-300 hover:bg-purple-300 bg-opacity-80 p-2 flex flex-row rounded-t-xl justify-between backdrop-blur-md w-[100%]"
       >
         <h1 className="font-bold">{forum.label}</h1>
         <div>{forum.threads.length}</div>
       </Link>
-      <div className={`bg-purple-300  ${hovering? "sm:block" : "sm:hidden"} p-2 bg-opacity-50 backdrop-blur-md w-[100%]`}>
+      <div className={`  ${hovering? "sm:block" : "sm:hidden"} p-2 bg-opacity-50 backdrop-blur-md w-[100%]`}>
         {winReady ? (
           <Link href={`../../Thread/${thread?.id}`} className="flex">
             <div>{thread?.headline}</div>

@@ -58,12 +58,12 @@ const EditThread = ({thread}: Props) => {
   };
 
   return (
-    <div className="z-[100] absolute w-[55%] bg-green-400 h-[50%] flex sm:items-center justify-center">
+    <div className=" w-full bg-white h-full flex sm:items-center rounded-xl justify-center">
       <p className="text-red-700">{errorMessage}</p>
       <form
         onSubmit={handleSubmit}
         method="post"
-        className="flex flex-col h-[40%] sm:h-[80%] bg-slate-600 rounded-xl p-6 text-sky-300 font-bold gap-4 sm:gap-4"
+        className="flex flex-col h-[40%] sm:h-[90%] w-[90%] sm:w-[54%]  p-6 text-sky-300 font-bold gap-4 sm:gap-4"
       >
         <h1 className="flex items-center justify-center">Endre Innlegg</h1>
         <h1>
@@ -79,7 +79,7 @@ const EditThread = ({thread}: Props) => {
             onChange={handleChange}
             required={true}
             value={form.headline}
-            className=" text-slate-800"
+            className=" text-slate-800 border-b-2 border-purple-300"
           />
         </div>
         <div className="flex justify-between">
@@ -91,7 +91,7 @@ const EditThread = ({thread}: Props) => {
             onChange={handleChange}
             required={true}
             value={form.content}
-            className=" text-slate-800"
+            className=" text-slate-800 border-b-2 border-purple-300"
           />
         </div>
         <div className="flex items-center justify-center">
