@@ -63,12 +63,12 @@ const ReplyForm = ({ thread }: Props) => {
       };
 
   return (
-    <div className="z-[100] absolute w-[80%] sm:w-[50%]   rounded-sm drop-shadow-md flex items-center gap-4 flex-col p-4">
+    <div className="z-[100] absolute w-[80%] sm:w-[40%] rounded-sm drop-shadow-md flex items-center gap-4 flex-col p-4">
       <p className="text-red-700">{errorMessage}</p>
       <form
         onSubmit={handleSubmit}
         method="post"
-        className="flex flex-col w-full sm:w-[50%] h-[40%] sm:h-[80%] bg-slate-600 p-6 text-orange-300 font-bold gap-4 sm:gap-4"
+        className="flex flex-col w-full sm:w-[50%] h-[40%] sm:h-[80%] rounded-xl bg-slate-600 p-6 text-sky-300 font-bold gap-4 sm:gap-4"
       >
         <h1 className="flex items-center justify-center">Opprett Innlegg</h1>
         <h1>Du svarer som: {session?.user?.name}</h1>
@@ -88,8 +88,8 @@ const ReplyForm = ({ thread }: Props) => {
         <div className="flex items-center justify-center">
           <input
             type="submit"
-            value="Send Svar"
-            className="bg-slate-700 hover:bg-slate-500 border-4 text-white border-orange-300 hover:border-orange-500 w-[50%] sm:w-[40%] p-4 rounded-full hover:cursor-pointer "
+            value="Svar"
+            className="bg-slate-700 hover:bg-slate-500 border-4 text-sky-300 hover:text-purple-300 border-sky-300 hover:border-purple-300 w-[50%] sm:w-[40%] p-4 rounded-full hover:cursor-pointer "
           />
         </div>
       </form>

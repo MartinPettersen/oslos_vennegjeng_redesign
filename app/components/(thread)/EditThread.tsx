@@ -58,19 +58,19 @@ const EditThread = ({thread}: Props) => {
   };
 
   return (
-    <div className="z-[100] absolute w-[50%] h-[50%] flex sm:items-center justify-center">
+    <div className="z-[100] absolute w-[55%] bg-green-400 h-[50%] flex sm:items-center justify-center">
       <p className="text-red-700">{errorMessage}</p>
       <form
         onSubmit={handleSubmit}
         method="post"
-        className="flex flex-col h-[40%] sm:h-[80%] bg-slate-600 p-6 text-orange-300 font-bold gap-4 sm:gap-4"
+        className="flex flex-col h-[40%] sm:h-[80%] bg-slate-600 rounded-xl p-6 text-sky-300 font-bold gap-4 sm:gap-4"
       >
         <h1 className="flex items-center justify-center">Endre Innlegg</h1>
         <h1>
             Navn: {session?.user?.name}
         </h1>
 
-        <div className="flex gap-2">
+        <div className="flex justify-between">
           <label>Tittel</label>
           <input
             id="headline"
@@ -82,7 +82,7 @@ const EditThread = ({thread}: Props) => {
             className=" text-slate-800"
           />
         </div>
-        <div className="flex gap-2">
+        <div className="flex justify-between">
           <label>Innhold</label>
           <input
             id="content"
@@ -98,7 +98,7 @@ const EditThread = ({thread}: Props) => {
           <input
             type="submit"
             value="Endre Innlegg"
-            className="bg-slate-700 hover:bg-slate-500 border-4 text-white border-orange-300 hover:border-orange-500 w-[80%] p-4 rounded-full hover:cursor-pointer "
+            className="bg-slate-700 hover:bg-slate-500 border-4 text-white border-sky-300 hover:border-purple-300 w-[80%] p-4 rounded-full hover:cursor-pointer "
           />
         </div>
       </form>

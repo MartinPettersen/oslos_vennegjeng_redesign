@@ -9,7 +9,7 @@ type Props = {
 
 const ReplyContainer = ({ thread }: Props) => {
   return (
-    <div className="flex flex-col gap-4 w-full">
+    <div className="flex flex-col gap-4 w-full h-[40% ]">
       {thread!.replies.map((reply) => (
         <ReplyDisplay postId={reply} />
       ))}

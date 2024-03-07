@@ -10,7 +10,7 @@ const Navbar = async () => {
   const session = await getServerSession(options);
 
   return (
-    <header className="text-sky-300 flex bg-white items-center justify-center w-screen sm:h-[10%] bg-opacity-80 backdrop-blur-md">
+    <header className="text-sky-300 flex bg-white items-center justify-center w-screen sm:h-[10%] bg-opacity-70 hover:bg-opacity-90 backdrop-blur-md">
       <nav className="flex flex-col font-bold sm:flex-row w-full px-8 py-4 items-center gap-4 sm:justify-between">
         <Logo />
         <div className="flex flex-col sm:flex-row gap-8 sm:gap-0 font-bold text-xl">

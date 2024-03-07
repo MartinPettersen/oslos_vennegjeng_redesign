@@ -23,7 +23,7 @@ export default function RootLayout({
         <body
           className={
             inter.className +
-            "flex h-screen w-full mx-auto bg-gradient-radial from-[#a3ddf8] to-[#ed8ee0]"
+            "flex h-screen w-full mx-auto bg-gradient-radial from-[#72bcde] to-[#efb4e9]"
           }
         >
           <Navbar />

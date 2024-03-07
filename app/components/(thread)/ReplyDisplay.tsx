@@ -63,12 +63,12 @@ const ReplyDisplay = ({ postId }: Props) => {
   };
 
   return (
-    <div className="bg-slate-500 flex w-[100%] p-4 flex-col text-orange-300 border-2 border-slate-200">
+    <div className={`bg-white rounded-xl flex w-[100%] p-4 flex-col  border-2 ${session?.user?.name === post?.userName ? "border-purple-300 text-purple-300" : "border-sky-300 text-sky-300"}`}>
       <div className="flex justify-between items-center">
         <h3 className="font-bold">{post?.userName}</h3>
         {session?.user?.name === post?.userName ? (
           <div className=" flex gap-2">
-            <PencilIcon onClick={() => setToggle(!toggle)} className="h-4 w-4 text-orange-300 hover:cursor-pointer" />
+            <PencilIcon onClick={() => setToggle(!toggle)} className="h-4 w-4  hover:cursor-pointer" />
             <TrashIcon
               onClick={() => handleDelete()}
               className="h-4 w-4 text-red-500 hover:cursor-pointer"
