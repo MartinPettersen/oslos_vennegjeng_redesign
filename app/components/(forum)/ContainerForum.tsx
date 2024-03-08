@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import ForumDisplay from "./ForumDisplay";
 import ForumSelector from "./ForumSelector";
@@ -24,7 +23,6 @@ function ContainerForum() {
       console.log(response.message);
     } else {
       const temp = await res.json();
-      // console.log(temp);
       console.log(temp.data);
       setForums(temp.data);
       setwinReady(true);
@@ -32,16 +30,8 @@ function ContainerForum() {
   };
 
   useEffect(() => {
-    console.log("i run");
     getForums();
   }, []);
-
-  /*
-
-      {forums.map((forum) => (
-        <div key={forum}>{forum}</div>
-      ))}
-      */
 
   return (
     <div className="flex flex-col gap-4 w-[100%] p-4 sm:w-[100%] h-[50%] sm:h-full  items-center justify-center">

@@ -10,12 +10,6 @@ type Post = {
     content: String,
 }
 
-type Thread = {
-    headline: String,
-    userName: String,
-    content: String,
-    replies: Post[],
-}
 
 const postSchema = new Schema({
     postId: String,

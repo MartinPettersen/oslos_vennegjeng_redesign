@@ -25,32 +25,26 @@ const ForumDisplay = ({ forum }: Props) => {
       body: JSON.stringify({ forumLabel }),
       headers: new Headers({ "content-type": "application/json" }),
     });
-    console.log("running");
-    // console.log(res)
     if (!res.ok) {
       const response = await res.json();
-      // console.log(response.message);
     } else {
       const temp = await res.json();
-      // console.log(temp);
 
-      console.log(temp.data);
       setThread(temp.data);
       setwinReady(true);
     }
   };
 
   useEffect(() => {
-    console.log("i run");
     getThread();
   }, []);
 
   return (
-    <div 
-    onMouseEnter={() => setHovering(true)}
-    onMouseLeave={() => setHovering(false)}
-
-    className=" bg-white flex flex-col text-slate-900 h-full rounded-xl w-[90%]">
+    <div
+      onMouseEnter={() => setHovering(true)}
+      onMouseLeave={() => setHovering(false)}
+      className=" bg-white flex flex-col text-slate-900 h-full rounded-xl w-[90%]"
+    >
       <Link
         href={`../Forum/${forum.label}`}
         className=" bg-sky-300 hover:bg-purple-300 bg-opacity-80 p-2 flex flex-row rounded-t-xl justify-between backdrop-blur-md w-[100%]"
@@ -58,14 +52,20 @@ const ForumDisplay = ({ forum }: Props) => {
         <h1 className="font-bold">{forum.label}</h1>
         <div>{forum.threads.length}</div>
       </Link>
-      <div className={`  ${hovering? "sm:block" : "sm:hidden"} p-2 bg-opacity-50 backdrop-blur-md w-[100%]`}>
+      <div
+        className={`  ${
+          hovering ? "sm:block" : "sm:hidden"
+        } p-2 bg-opacity-50 backdrop-blur-md w-[100%]`}
+      >
         {winReady ? (
           <Link href={`../../Thread/${thread?.id}`} className="flex">
             <div>{thread?.headline}</div>
           </Link>
         ) : (
-          <div className="animate-pulse font-bold text-3xl text-pink-300 w-full items-center justify-center">Loading</div>
-          )}
+          <div className="animate-pulse font-bold text-3xl text-pink-300 w-full items-center justify-center">
+            Loading
+          </div>
+        )}
       </div>
     </div>
   );

@@ -2,22 +2,20 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Thread } from "../../../types/Thread";
-import { useSession } from 'next-auth/react'
-import { redirect } from 'next/navigation'
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 type Props = {
-    thread: Thread
-}
-const EditThread = ({thread}: Props) => {
+  thread: Thread;
+};
+const EditThread = ({ thread }: Props) => {
   const router = useRouter();
-
-
-  const {data: session}: any = useSession({
+  const { data: session }: any = useSession({
     required: true,
     onUnauthenticated() {
-        redirect("/api/auth/signin?callbackUrl=/Bruker");
-    }
-})
+      redirect("/api/auth/signin?callbackUrl=/Bruker");
+    },
+  });
 
   const [form, setForm] = useState({
     id: thread.id,
@@ -25,7 +23,7 @@ const EditThread = ({thread}: Props) => {
     userName: thread.userName,
     content: thread.content.toString(),
     forumLabel: thread.forumLabel,
-    replies: thread.replies
+    replies: thread.replies,
   });
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -66,9 +64,7 @@ const EditThread = ({thread}: Props) => {
         className="flex flex-col h-[40%] sm:h-[90%] w-[90%] sm:w-[54%]  p-6 text-sky-300 font-bold gap-4 sm:gap-4"
       >
         <h1 className="flex items-center justify-center">Endre Innlegg</h1>
-        <h1>
-            Navn: {session?.user?.name}
-        </h1>
+        <h1>Navn: {session?.user?.name}</h1>
 
         <div className="flex justify-between">
           <label>Tittel</label>

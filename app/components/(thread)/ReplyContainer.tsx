@@ -1,6 +1,6 @@
 "use client";
 import { Thread } from "@/types/Thread";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReplyDisplay from "./ReplyDisplay";
 
 type Props = {

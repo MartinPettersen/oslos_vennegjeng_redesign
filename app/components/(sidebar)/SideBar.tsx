@@ -1,13 +1,12 @@
-import React from 'react'
-import ContainerForum from '../(forum)/ContainerForum'
+import React from "react";
+import ContainerForum from "../(forum)/ContainerForum";
 
 const SideBar = () => {
   return (
     <div className="flex  w-[0%] h-full sm:w-[25%] hidden sm:block">
+      <ContainerForum />
+    </div>
+  );
+};
 
-    <ContainerForum />
-  </div>
-  )
-}
-
-export default SideBar
+export default SideBar;
