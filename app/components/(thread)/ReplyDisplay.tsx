@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { TrashIcon } from "@heroicons/react/20/solid";
 import { PencilIcon } from "@heroicons/react/20/solid";
 import EditForm from "./EditForm";
+import ThreadShare from "./ThreadShare";
 
 type Props = {
   postId: String;
@@ -82,7 +83,11 @@ const ReplyDisplay = ({ postId }: Props) => {
           <></>
         )}
       </div>
+      <div className="flex flex-row justify-between">
       {toggle ? <EditForm post={post!} /> : <p>{post?.reply}</p>}
+      <h3 className="font-bold">{post?.createdAt === post?.updatedAt ? "": "[Edited]"}</h3>
+
+      </div>
     </div>
   );
 };

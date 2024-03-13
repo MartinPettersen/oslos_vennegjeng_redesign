@@ -6,6 +6,7 @@ import { PencilIcon } from "@heroicons/react/20/solid";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import EditThread from "./EditThread";
+import ThreadShare from "./ThreadShare";
 
 type Props = {
   thread: Thread;
@@ -65,6 +66,8 @@ const ThreadContent = ({ thread }: Props) => {
           <div className="text-purple-300">{thread!.userName}</div>
 
           <p className="text-sky-300">{thread!.content}</p>
+          <ThreadShare />
+
         </div>
       )}
     </div>
