@@ -64,8 +64,10 @@ const page = ({ params }: Props) => {
   }, []);
   */
   return (
-    <div className="flex justify-center flex-col gap-4 sm:gap-10 w-full h-full  items-center p-4">
-        {userName}
+    <div className="flex justify-center w-screen sm:w-full h-full  items-center p-4">
+      <div className="bg-white bg-opacity-30 w-[60%] h-[80%] flex items-start justify-center">
+        <h1 className="text-3xl font-bold p-4 text-sky-400">{userName}</h1>
+      </div>
     </div>
   );
 };
