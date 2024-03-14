@@ -9,7 +9,7 @@ const UserNameLink = ({ userName }: Props) => {
   return (
     <Link
       href={`../../User/${userName}`}
-      className="flex flex-col font-bold  hover:text-purple-300"
+      className="flex flex-col font-bold text-sky-300 hover:text-purple-300"
     >
       <h3 className="font-bold ">{userName}</h3>
     </Link>

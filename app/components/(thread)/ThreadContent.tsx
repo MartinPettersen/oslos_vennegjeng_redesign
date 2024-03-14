@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import EditThread from "./EditThread";
 import ThreadShare from "./ThreadShare";
+import UserNameLink from "./UserNameLink";
 
 type Props = {
   thread: Thread;
@@ -63,11 +64,9 @@ const ThreadContent = ({ thread }: Props) => {
               <></>
             )}
           </div>
-          <div className="text-purple-300">{thread!.userName}</div>
-
+          <UserNameLink userName={thread!.userName} />
           <p className="text-sky-300">{thread!.content}</p>
           <ThreadShare />
-
         </div>
       )}
     </div>

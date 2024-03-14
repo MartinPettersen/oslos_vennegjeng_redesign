@@ -91,7 +91,7 @@ const page = ({ params }: Props) => {
             <div className="flex flex-col w-full items-center justify-center gap-2">
               {posts?.map((post) => (
                 <Link
-                  href={`../../Thread/${post.postId}`}
+                  href={`../../Post/${post.postId}`}
                   className="flex items-center justify-center text-sky-300 hover:text-sky-400 hover:bg-purple-100 w-[98%] rounded-md"
                 >
                   <h2 className="font-bold text-md">{post.reply}</h2>
