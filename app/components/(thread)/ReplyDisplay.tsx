@@ -7,6 +7,7 @@ import { PencilIcon } from "@heroicons/react/20/solid";
 import EditForm from "./EditForm";
 import ThreadShare from "./ThreadShare";
 import PostShare from "./PostShare";
+import UserNameLink from "./UserNameLink";
 
 type Props = {
   postId: String;
@@ -68,7 +69,7 @@ const ReplyDisplay = ({ postId }: Props) => {
       }`}
     >
       <div className="flex justify-between items-center">
-        <h3 className="font-bold">{post?.userName}</h3>
+        <UserNameLink userName={post?.userName} />
         {session?.user?.name === post?.userName ? (
           <div className=" flex gap-2">
             <PencilIcon
