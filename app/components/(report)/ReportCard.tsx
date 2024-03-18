@@ -17,9 +17,98 @@ const ReportCard = ({ report }: Props) => {
   const [post, setPost] = useState<Post>();
   const [thread, setThread] = useState<Post>();
 
-  function handleDelete(report: Report): void {
-    throw new Error("Function not implemented.");
-  }
+  
+  const getPost = async (report: Report) => {
+    const postId = report.subjectId;
+    const res = await fetch("/api/GetPost", {
+      method: "POST",
+      body: JSON.stringify({ postId }),
+      headers: new Headers({ "content-type": "application/json" }),
+    });
+    if (!res.ok) {
+      const response = await res.json();
+      console.log(response.message);
+    } else {
+      const temp = await res.json();
+      setPost(temp.data);
+      deletePost(report, temp.data);
+
+    }
+  };
+
+  const getThread = async (report: Report) => {
+    const threadId = report.subjectId;
+    const res = await fetch("/api/GetThread", {
+      method: "POST",
+      body: JSON.stringify({ threadId }),
+      headers: new Headers({ "content-type": "application/json" }),
+    });
+    if (!res.ok) {
+      const response = await res.json();
+      console.log(response.message);
+    } else {
+      const temp = await res.json();
+      setThread(temp.data);
+      deleteThread(report, temp.data);
+    }
+  };
+
+  const handleDelete = async (report: Report) => {
+    setToggleDelete(false);
+    if (report.subjectType === "post") {
+      getPost(report);
+    } else {
+      getThread(report);
+    }
+  };
+
+  
+  const deleteThread = async (report: Report, thread: Thread) => {
+    const res = await fetch("/api/DeleteThread", {
+      method: "POST",
+      body: JSON.stringify({ thread }),
+      headers: new Headers({ "content-type": "application/json" }),
+    });
+
+    if (!res.ok) {
+      const response = await res.json();
+    } else {
+      deleteReport(report);
+    }
+  };
+
+  const deletePost = async (report: Report, post: Post) => {
+    const threadId = post!.threadId;
+    const postId = post!.postId;
+    const res = await fetch("/api/DeletePost", {
+      method: "POST",
+      body: JSON.stringify({ postId, threadId }),
+      headers: new Headers({ "content-type": "application/json" }),
+    });
+
+    if (!res.ok) {
+      const response = await res.json();
+      console.log(response);
+    } else {
+      deleteReport(report);
+    }
+  };
+
+  const deleteReport = async (report: Report) => {
+    console.log(report);
+    const reportId = report!.reportId;
+    const res = await fetch("/api/DeleteReport", {
+      method: "POST",
+      body: JSON.stringify({ reportId }),
+      headers: new Headers({ "content-type": "application/json" }),
+    });
+
+    if (!res.ok) {
+      const response = await res.json();
+      console.log(response);
+    } else {
+    }
+  };
 
   return (
     <div className="bg-white p-4 rounded-xl w-[90%] sm:w-[30%] flex gap-2 flex-col">
