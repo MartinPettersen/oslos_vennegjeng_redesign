@@ -33,6 +33,8 @@ export async function POST(req: any) {
 
         await Forum.findOneAndUpdate({ label: thread.forumLabel }, { threads: existingForum!.threads })
 
+        await Thread.findOneAndDelete({ id: thread.id }).lean().exec();
+
         return NextResponse.json({ data: "deleted" }, { status: 201 })
 
     } catch (error) {
