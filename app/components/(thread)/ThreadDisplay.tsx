@@ -42,7 +42,7 @@ const ThreadDisplay = ({ threadId }: Props) => {
           <div className="flex justify-between">
             <p>{thread!.userName}</p>
             <div className="flex gap-1">
-              <TimeStamp time={thread.createdAt} />
+              <TimeStamp time={thread!.createdAt} />
               <p>#{thread!.replies.length}</p>
             </div>
           </div>

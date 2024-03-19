@@ -9,6 +9,7 @@ import EditThread from "./EditThread";
 import ThreadShare from "./ThreadShare";
 import UserNameLink from "./UserNameLink";
 import ReportForm from "./ReportForm";
+import TimeStamp from "./TimeStamp";
 
 type Props = {
   thread: Thread;
@@ -79,7 +80,10 @@ const ThreadContent = ({ thread }: Props) => {
           </div>
           <UserNameLink userName={thread!.userName} />
           <p className="text-sky-300">{thread!.content}</p>
-          <ThreadShare />
+          <div className="flex justify-between  ">
+            <ThreadShare />
+            <TimeStamp time={thread!.createdAt} />
+          </div>
         </div>
       )}
     </div>
