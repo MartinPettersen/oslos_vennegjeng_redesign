@@ -51,7 +51,7 @@ const page = ({ params }: Props) => {
           {winReady ? (
             forum!.threads.map((thread: any) => (
               <div className="bg-white rounded-xl hover:bg-slate-700 hover:text-purple-300  flex flex-col p-4 w-[80%] sm:w-[80%]">
-                <ThreadDisplay threadId={thread} />
+                <ThreadDisplay parentId={thread} />
               </div>
             ))
           ) : (

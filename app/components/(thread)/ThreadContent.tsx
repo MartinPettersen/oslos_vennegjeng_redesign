@@ -82,7 +82,9 @@ const ThreadContent = ({ thread }: Props) => {
           <p className="text-sky-300">{thread!.content}</p>
           <div className="flex justify-between  ">
             <ThreadShare />
-            <TimeStamp time={thread!.createdAt} />
+            {winReady ? (
+              <TimeStamp time={thread!.createdAt} />
+            ) : null}
           </div>
         </div>
       )}
