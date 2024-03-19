@@ -63,48 +63,59 @@ const ReplyDisplay = ({ postId }: Props) => {
   };
 
   return (
-    <div
-      className={`bg-white rounded-xl flex w-[100%] p-4 gap-4 flex-col  border-2 ${
-        session?.user?.name === post?.userName
-          ? "border-purple-300 text-purple-300"
-          : "border-sky-300 text-sky-300"
-      }`}
-    >
-      <div className="flex justify-between items-center">
-        <UserNameLink userName={post?.userName} />
-        <div className="flex gap-2">
-          {winReady ? (
-            <ReportForm subjectType="post" subjectId={post!.postId} />
-          ) : (
-            <></>
-          )}
-          {session?.user?.name === post?.userName ? (
-            <div className=" flex gap-2">
-              <PencilIcon
-                onClick={() => setToggle(!toggle)}
-                className="h-4 w-4  hover:cursor-pointer"
-              />
-              <TrashIcon
-                onClick={() => handleDelete()}
-                className="h-4 w-4 text-red-500 hover:cursor-pointer"
-              />
-            </div>
-          ) : (
-            <></>
-          )}
+    <div className="w-full h-full">
+      <div
+        className={`bg-white rounded-xl flex w-[100%] p-4 gap-4 flex-col  border-2 ${
+          session?.user?.name === post?.userName
+            ? "border-purple-300 text-purple-300"
+            : "border-sky-300 text-sky-300"
+        }`}
+      >
+        <div className="flex justify-between items-center">
+          <UserNameLink userName={post?.userName} />
+          <div className="flex gap-2">
+            {winReady ? (
+              <ReportForm subjectType="post" subjectId={post!.postId} />
+            ) : (
+              <></>
+            )}
+            {session?.user?.name === post?.userName ? (
+              <div className=" flex gap-2">
+                <PencilIcon
+                  onClick={() => setToggle(!toggle)}
+                  className="h-4 w-4  hover:cursor-pointer"
+                />
+                <TrashIcon
+                  onClick={() => handleDelete()}
+                  className="h-4 w-4 text-red-500 hover:cursor-pointer"
+                />
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+        </div>
+        <div className="flex flex-row justify-between">
+          {toggle ? <EditForm post={post!} /> : <p>{post?.reply}</p>}
+          <h3 className="font-bold">
+            {post?.createdAt === post?.updatedAt ? "" : "[Edited]"}
+          </h3>
+        </div>
+        <div className="flex justify-between">
+          <PostShare postId={postId} />
+          {winReady ? <TimeStamp time={post!.createdAt} /> : <></>}
         </div>
       </div>
-      <div className="flex flex-row justify-between">
-        {toggle ? <EditForm post={post!} /> : <p>{post?.reply}</p>}
-        <h3 className="font-bold">
-          {post?.createdAt === post?.updatedAt ? "" : "[Edited]"}
-        </h3>
-      </div>
-      <div className="flex justify-between">
-        <PostShare postId={postId} />
-        {winReady ? (
+      <div className="flex w-full flex-row gap-1 pl-4">
+        {post?.children ? (
+          <div className="flex flex-col w-full">
+            {post?.children.map((childId) => (
+              <ReplyDisplay postId={childId} />
 
-        <TimeStamp time={post!.createdAt} /> ) :<></>}
+            ))}
+          </div>
+        ):<></>}
+
       </div>
     </div>
   );
