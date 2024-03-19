@@ -9,6 +9,7 @@ import ThreadShare from "./ThreadShare";
 import PostShare from "./PostShare";
 import UserNameLink from "./UserNameLink";
 import ReportForm from "./ReportForm";
+import TimeStamp from "./TimeStamp";
 
 type Props = {
   postId: String;
@@ -72,7 +73,11 @@ const ReplyDisplay = ({ postId }: Props) => {
       <div className="flex justify-between items-center">
         <UserNameLink userName={post?.userName} />
         <div className="flex gap-2">
-          {winReady ? <ReportForm subjectType="post" subjectId={post!.postId}/>: <></>}
+          {winReady ? (
+            <ReportForm subjectType="post" subjectId={post!.postId} />
+          ) : (
+            <></>
+          )}
           {session?.user?.name === post?.userName ? (
             <div className=" flex gap-2">
               <PencilIcon
@@ -95,7 +100,12 @@ const ReplyDisplay = ({ postId }: Props) => {
           {post?.createdAt === post?.updatedAt ? "" : "[Edited]"}
         </h3>
       </div>
-      <PostShare postId={postId} />
+      <div className="flex justify-between">
+        <PostShare postId={postId} />
+        {winReady ? (
+
+        <TimeStamp time={post!.createdAt} /> ) :<></>}
+      </div>
     </div>
   );
 };
