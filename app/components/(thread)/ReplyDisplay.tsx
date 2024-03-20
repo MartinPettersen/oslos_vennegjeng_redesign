@@ -10,6 +10,7 @@ import PostShare from "./PostShare";
 import UserNameLink from "./UserNameLink";
 import ReportForm from "./ReportForm";
 import TimeStamp from "./TimeStamp";
+import ReplyForm from "./ReplyForm";
 
 type Props = {
   postId: String;
@@ -19,6 +20,7 @@ const ReplyDisplay = ({ postId }: Props) => {
   const [post, setPost] = useState<Post>();
   const [winReady, setwinReady] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const [toggleReply, setToggleReply] = useState(false);
 
   const getPost = async () => {
     const res = await fetch("/api/GetPost", {
@@ -102,7 +104,28 @@ const ReplyDisplay = ({ postId }: Props) => {
           </h3>
         </div>
         <div className="flex justify-between">
+          <div className="flex gap-2">
           <PostShare postId={postId} />
+          {toggleReply ? (
+              <>
+                <div
+                  className="w-full h-full fixed top-0 left-0 z-10 "
+                  onClick={() => setToggleReply(!toggleReply)}
+                ></div>
+
+                <ReplyForm parentId={post!.postId} parentType={"post"}/>
+              </>
+            ) : (
+              <div className="">
+                <div
+                  onClick={() => setToggleReply(!toggleReply)}
+                  className="w-12 rounded-xl text-white font-bold flex items-center justify-center bg-sky-300 hover:bg-purple-700  p-2 hover:text-sky-300 backdrop-blur-md "
+                >
+                  Svar
+                </div>
+              </div>
+            )}
+            </div>
           {winReady ? <TimeStamp time={post!.createdAt} /> : <></>}
         </div>
       </div>
@@ -110,12 +133,12 @@ const ReplyDisplay = ({ postId }: Props) => {
         {post?.children ? (
           <div className="flex flex-col w-full">
             {post?.children.map((childId) => (
-              <ReplyDisplay postId={childId} />
-
+                <ReplyDisplay postId={childId} />
             ))}
           </div>
-        ):<></>}
-
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

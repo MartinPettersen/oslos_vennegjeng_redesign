@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import Thread from '@/app/(models)/Thread';
 import Post from "@/app/(models)/Post";
+import { PostT } from "@/types/Post";
 
 type ThreadT = {
     headline: String;
     userName: String;
     content: String;
-    replies: Post[];
+    replies: PostT[];
 }
 
 export async function POST(req: any) {

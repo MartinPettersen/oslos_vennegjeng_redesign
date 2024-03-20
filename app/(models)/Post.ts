@@ -3,11 +3,14 @@ import mongoose, { Schema } from "mongoose"
 mongoose.connect(process.env.MONGODB_URI!);
 mongoose.Promise = global.Promise
 
-type Post = {
+export type Post = {
     postId: String,
+    parentId: String,
+    reply: String,
     userName: String,
-    postDate: String,
-    content: String,
+    createdAt: String,
+    updatedAt: String,
+    children: String[]
 }
 
 

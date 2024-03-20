@@ -20,7 +20,7 @@ const Reply = ({ thread }: Props) => {
             onClick={() => setToggle(!toggle)}
           ></div>
 
-          <ReplyForm thread={thread} />
+          <ReplyForm parentId={thread.id} parentType={"thread"} />
         </>
       ) : (
         <div

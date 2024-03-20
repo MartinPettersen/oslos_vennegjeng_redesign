@@ -7,10 +7,11 @@ import { useRouter } from "next/navigation";
 import { redirect } from "next/navigation";
 
 type Props = {
-  thread: Thread;
+  parentId: String;
+  parentType: String;
 };
 
-const ReplyForm = ({ thread }: Props) => {
+const ReplyForm = ({ parentId, parentType }: Props) => {
   const router = useRouter();
 
   const postId = uuidv4();
@@ -24,7 +25,7 @@ const ReplyForm = ({ thread }: Props) => {
 
   const [form, setForm] = useState({
     postId: postId,
-    parentId: thread.id,
+    parentId: parentId,
     reply: "",
     userName: session?.user?.name,
   });
@@ -46,7 +47,7 @@ const ReplyForm = ({ thread }: Props) => {
 
     const res = await fetch("/api/Posts", {
       method: "POST",
-      body: JSON.stringify({ form }),
+      body: JSON.stringify({ form, parentType }),
       headers: new Headers({ "content-type": "application/json" }),
     });
 
