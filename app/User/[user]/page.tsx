@@ -1,6 +1,7 @@
 "use client";
 import Reply from "@/app/components/(thread)/Reply";
 import ReplyDisplay from "@/app/components/(thread)/ReplyDisplay";
+import ReportForm from "@/app/components/(thread)/ReportForm";
 import ThreadContent from "@/app/components/(thread)/ThreadContent";
 import ThreadDisplay from "@/app/components/(thread)/ThreadDisplay";
 import { Post } from "@/types/Post";
@@ -67,6 +68,13 @@ const page = ({ params }: Props) => {
         <h1 className="text-6xl font-bold flex items-center justify-center p-4 text-sky-400">
           {userName}
         </h1>
+        <div className="z-1 static p-4">
+          {winReady ? (
+            <ReportForm subjectType="user" subjectId={userName} />
+          ) : (
+            <></>
+          )}
+        </div>
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-1 justify-start sm:justify-center h-full w-full  sm:w-[90%]">
           <div className="w-[80%] sm:w-1/2 flex flex-col gap-2 items-center border-2 border-purple-200 rounded-md bg-purple-50 justify-center">
             <h2 className="font-bold text-2xl text-purple-300 border-b-2 border-purple-300">
